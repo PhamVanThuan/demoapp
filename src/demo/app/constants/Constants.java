@@ -141,7 +141,7 @@ public class Constants {
         /**
          * Value: "HOME"
          */
-        public final static String HOME = "HOME";
+        public final static String HOME = "Home";
 
     }
     

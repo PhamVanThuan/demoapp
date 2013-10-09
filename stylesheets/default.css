@@ -1,0 +1,21 @@
+.root {
+    -fx-font: 12px "Tahoma";
+}
+
+.fieldset {
+    -fx-border-insets: 20 10 10 10;
+    -fx-background-color: transparent;    
+    -fx-border-width: 1;
+    -fx-border-color: #999;
+    -fx-border-radius: 5;
+}
+
+.label {
+    -fx-background-color: white;
+    -fx-padding: 5
+}
+
+.tab-pane {
+    -fx-border-width: 2;
+    -fx-border-color: #666;
+}

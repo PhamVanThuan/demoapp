@@ -10,6 +10,11 @@ import demo.app.constants.Constants;
 import demo.app.dependency.DependencyManager;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -20,6 +25,13 @@ import javafx.scene.layout.Pane;
  */
 public class HomeController extends ModuleBase {
 
+    /*
+     * FXML Element
+     */
+    @FXML private Button btnSayHello;
+    @FXML private TextField txtName;
+    @FXML private Label lbDisplayName;
+    
     private BorderPane m_BorderPane;
     private ILogger m_ErrorLogger;
     private ILogger m_DebugLogger;
@@ -45,5 +57,16 @@ public class HomeController extends ModuleBase {
         m_BorderPane = new BorderPane();
         loadView(Constants.FXML.HOME, m_BorderPane);
     }
+    
+    // <editor-fold  desc="GUI event handlers" defaultstate="collapsed">
+    
+    @FXML
+    private void btnSayHello(ActionEvent event) {
+        String name = txtName.getText();
+        lbDisplayName.setText(name);
+    }
+  
+
+    //*/
     
 }
