@@ -15,7 +15,8 @@
             <Label text="Enter name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
             <TextField fx:id="txtName" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Label fx:id="lbDisplayName" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="btnSayHello" mnemonicParsing="false" onAction="#btnSayHello" text="Say Hello!!!" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="btnSayHello" mnemonicParsing="false" onAction="#btnSayHello_Action" text="Say Hello!!!" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="btnNext" mnemonicParsing="false" onAction="#btnNext_Action" text="Next" GridPane.columnIndex="2" GridPane.rowIndex="2" />
           </children>
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

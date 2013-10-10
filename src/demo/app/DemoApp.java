@@ -8,6 +8,7 @@ import demo.app.common.ILogger;
 import demo.app.constants.Constants;
 import demo.app.dependency.DependencyManager;
 import demo.app.util.ApplicationContext;
+import demo.app.util.PubSub;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -34,15 +35,13 @@ public class DemoApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            PubSub.subscribe(this);
             m_Stage = primaryStage;
+            m_Bootstrapper.registerDependencies();
             m_ScreenManager = new ScreenManager(m_Stage);
             m_Context = ApplicationContext.instance();
-            
-            //show Home Screen
-            m_ScreenManager.loadHomeScene();
-            
             m_Stage.show();
-            
+
             // Must call sizeToScene() after show() so that main window with setResizable(false)
             // won't have extra height and width than expected.
             m_Stage.sizeToScene();

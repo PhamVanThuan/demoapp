@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package demo.app.ui;
+package demo.app.ui.hello;
 
 import demo.app.common.ILogger;
 import demo.app.common.ModuleBase;
@@ -15,9 +15,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -26,20 +26,21 @@ import javafx.scene.layout.Pane;
  *
  * @author thuanpv
  */
-public class HomeController extends ModuleBase {
+public class HelloController extends ModuleBase {
 
     /*
      * FXML Element
      */
-    @FXML private Button btnSayHello;
-    @FXML private Button btnNext;
-    @FXML private TextField txtName;
-    @FXML private Label lbDisplayName;
+    @FXML private Button btnHello;
+    @FXML private Button btnBack;
+    @FXML private Label lbHello;
     
-    private final static String VIEW_PATH = "Home.fxml";
+    private final static String VIEW_PATH = "Hello.fxml";
     private BorderPane m_BorderPane;
     private ILogger m_ErrorLogger;
     private ILogger m_DebugLogger;
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -58,25 +59,22 @@ public class HomeController extends ModuleBase {
         return m_BorderPane;
     }
     
-    private void initComponent() {
+    private void initComponent(){
         m_BorderPane = new BorderPane();
         loadViewByPath(VIEW_PATH, m_BorderPane);
     }
     
-    // <editor-fold  desc="GUI event handlers" defaultstate="collapsed">
-    
+    /*
+     * Event
+     */
     @FXML
-    private void btnSayHello_Action(ActionEvent event) {
-        String name = txtName.getText();
-        lbDisplayName.setText(name);
+    private void btnHello_Action(ActionEvent event) {
+       
     }
     
     @FXML
-    private void btnNext_Action(ActionEvent event){
-        PubSub.publish(new SceneRequestingEvent(UINames.Scene.HELLO));
+    private void btnBack_Action(ActionEvent event) {
+        PubSub.publish(new SceneRequestingEvent(UINames.Scene.HOME));
     }
-  
-
-    //*/
     
 }

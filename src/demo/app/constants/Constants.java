@@ -142,6 +142,11 @@ public class Constants {
          * Value: "HOME"
          */
         public final static String HOME = "Home";
+        
+        /**
+         * Value: "Hello"
+         */
+        public final static String HELLO = "Hello";
 
     }
     
@@ -153,6 +158,11 @@ public class Constants {
          * Value: "ui.home"
          */
         public final static String HOME = "ui.home";
+        
+        /**
+         * Value: "ui.hello"
+         */
+        public final static String HELLO = "ui.hello";
 
     }
     

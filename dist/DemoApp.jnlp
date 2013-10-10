@@ -11,8 +11,9 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="DemoApp.jar" size="38581" download="eager" />
+    <jar href="DemoApp.jar" size="45359" download="eager" />
     <jar href="lib/guava-15.0.jar" size="2172168" download="eager" />
+    <jar href="lib/jasypt-1.9.1.jar" size="125549" download="eager" />
     <jar href="lib/log4j-1.2.17.jar" size="489883" download="eager" />
     <jar href="lib/postgresql-9.2-1003.jdbc4.jar" size="580161" download="eager" />
     <jar href="lib/spring-aop-3.2.4.RELEASE.jar" size="335455" download="eager" />
