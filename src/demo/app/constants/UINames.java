@@ -7,5 +7,5 @@ public class UINames {
     /**
      * Scene names
      */
-    public enum Scene { HOME, HELLO }
+    public enum Scene { HOME, HELLO, EDIT }
 }

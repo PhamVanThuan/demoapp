@@ -9,14 +9,20 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import demo.app.common.ModuleBase;
+import demo.app.common.UIHelper;
 import demo.app.constants.Constants;
+import demo.app.dependency.DependencyManager;
 import demo.app.events.SceneRequestingEvent;
 import demo.app.events.WindowClosingEvent;
+import demo.app.interfaces.serviceProviders.IPersonServiceProvider;
+import demo.app.ui.EditController;
 import demo.app.ui.hello.HelloController;
 import demo.app.ui.HomeController;
 import demo.app.util.ApplicationContext;
 import demo.app.util.LanguageHelper;
 import demo.app.util.PubSub;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 
 
 /**
@@ -27,6 +33,7 @@ public class ScreenManager {
     private Stage m_Stage;
     private String[] m_CssFiles;
     private ApplicationContext m_AppContext;
+    private IPersonServiceProvider m_PersonServiceProvider;
     
     public ScreenManager(Stage stage) throws MalformedURLException {
         m_Stage = stage;
@@ -38,11 +45,23 @@ public class ScreenManager {
         
     public void loadHomeScene() {
         m_Stage.setResizable(false);
-        HomeController homeController = new HomeController();
-        //LoginModule loginUI = new LoginModule(m_UserServiceProvider, m_SettingsServiceProvider);
+        HomeController loginUI = new HomeController(m_PersonServiceProvider);
         String title = LanguageHelper.getString(Constants.Language.HOME);
-        replaceSceneContent(homeController);
+        replaceSceneContent(loginUI);
         m_Stage.setTitle(m_AppContext.appendApplicationTitle(title));
+    }
+    
+    public void showHelloDialog() {
+        HelloController helloController = new HelloController();
+        Stage settings = showSubStage(Constants.Language.HELLO, helloController.getView(), false);
+        settings.initModality(Modality.APPLICATION_MODAL);
+        settings.show();
+    }
+    public void showEditDialog(){
+        EditController editController = new EditController();
+        Stage edit = showSubStage(Constants.Language.HELLO, editController.getView(), false);
+        edit.initModality(Modality.APPLICATION_MODAL);
+        edit.show();
     }
     
     public void loadHelloScene() {
@@ -67,13 +86,16 @@ public class ScreenManager {
                 loadHomeScene();
                 break;
             case HELLO:
-                loadHelloScene();
+                //loadHelloScene();
+                showHelloDialog();
+            case EDIT:
+                showEditDialog();
                 break;
         }
     }
     
     private void resolveDependencies() {
-       
+       m_PersonServiceProvider = DependencyManager.resolveInstance(IPersonServiceProvider.class);
     }
     
     private <T extends ModuleBase> void replaceSceneContent(ModuleBase viewWrapper) {
@@ -81,6 +103,13 @@ public class ScreenManager {
         applyStylesheets(view);
         Scene scene = new Scene(view);
         m_Stage.setScene(scene);
+    }
+    
+    private Stage showSubStage(String titleKey, Pane viewRoot, boolean resizeable) {
+        String title = LanguageHelper.getString(titleKey);
+        applyStylesheets(viewRoot);
+        return UIHelper.createSubStage(m_Stage, viewRoot, m_AppContext.appendApplicationTitle(title),
+            resizeable);
     }
 
     private void applyStylesheets(Parent node) {

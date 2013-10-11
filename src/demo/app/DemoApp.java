@@ -7,9 +7,12 @@ package demo.app;
 import demo.app.common.ILogger;
 import demo.app.constants.Constants;
 import demo.app.dependency.DependencyManager;
+import demo.app.models.PersonModel;
 import demo.app.util.ApplicationContext;
 import demo.app.util.PubSub;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 
 /**
@@ -30,6 +33,7 @@ public class DemoApp extends Application {
         m_Bootstrapper.registerLoggers();
         m_DebugLogger = (ILogger) DependencyManager.resolveBean(Constants.Loggers.DEBUG);
         m_ErrorLogger = (ILogger) DependencyManager.resolveBean(Constants.Loggers.ERROR);
+
     }
 
     @Override
@@ -40,6 +44,10 @@ public class DemoApp extends Application {
             m_Bootstrapper.registerDependencies();
             m_ScreenManager = new ScreenManager(m_Stage);
             m_Context = ApplicationContext.instance();
+
+            m_ScreenManager.loadHomeScene();
+            ///Show Main
+
             m_Stage.show();
 
             // Must call sizeToScene() after show() so that main window with setResizable(false)
@@ -51,11 +59,6 @@ public class DemoApp extends Application {
             m_DebugLogger.error(null, ex);
         }
     }
-    
-    private void showHomeScreen() {
-        
-    }
-    
 
     /**
      * The main() method is ignored in correctly deployed JavaFX application.

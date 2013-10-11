@@ -11,7 +11,7 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="DemoApp.jar" size="45359" download="eager" />
+    <jar href="DemoApp.jar" size="95819" download="eager" />
     <jar href="lib/guava-15.0.jar" size="2172168" download="eager" />
     <jar href="lib/jasypt-1.9.1.jar" size="125549" download="eager" />
     <jar href="lib/log4j-1.2.17.jar" size="489883" download="eager" />

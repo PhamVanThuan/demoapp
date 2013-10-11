@@ -8,6 +8,10 @@ import demo.app.common.ILogger;
 import demo.app.constants.Constants;
 import demo.app.dependency.DependencyManager;
 import demo.app.impl.Log4jLogger;
+import demo.app.impl.datalayers.PersonDataLayer;
+import demo.app.impl.servicesProviders.PersonServiceProvider;
+import demo.app.interfaces.datalayers.IPersonDatalayer;
+import demo.app.interfaces.serviceProviders.IPersonServiceProvider;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
@@ -28,6 +32,13 @@ public class Bootstrapper {
      */
     public void registerDependencies()
             throws ClassNotFoundException {
+        
+        //Inject PersonServiceProvider
+        IPersonDatalayer personDataLayer = new PersonDataLayer();
+        IPersonServiceProvider personServiceProvider = new PersonServiceProvider(personDataLayer);
+        
+        DependencyManager.registerInstance(IPersonDatalayer.class, personDataLayer);
+        DependencyManager.registerInstance(IPersonServiceProvider.class, personServiceProvider);
         
     }
     

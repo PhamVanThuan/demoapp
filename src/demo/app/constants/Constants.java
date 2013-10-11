@@ -147,6 +147,11 @@ public class Constants {
          * Value: "Hello"
          */
         public final static String HELLO = "Hello";
+        
+        /**
+         * Value: "Edit"
+         */
+        public final static String EDIT = "Edit";
 
     }
     

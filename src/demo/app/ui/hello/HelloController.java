@@ -40,6 +40,9 @@ public class HelloController extends ModuleBase {
     private ILogger m_ErrorLogger;
     private ILogger m_DebugLogger;
     
+    public HelloController(){
+        PubSub.subscribe(this);
+    }
     
     /**
      * Initializes the controller class.
@@ -64,9 +67,7 @@ public class HelloController extends ModuleBase {
         loadViewByPath(VIEW_PATH, m_BorderPane);
     }
     
-    /*
-     * Event
-     */
+    // <editor-fold  desc="GUI event handlers" defaultstate="collapsed">
     @FXML
     private void btnHello_Action(ActionEvent event) {
        
@@ -76,5 +77,7 @@ public class HelloController extends ModuleBase {
     private void btnBack_Action(ActionEvent event) {
         PubSub.publish(new SceneRequestingEvent(UINames.Scene.HOME));
     }
+    
+    // </editor-fold>
     
 }
