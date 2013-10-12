@@ -87,9 +87,7 @@ public class HomeController extends ModuleBase {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<PersonModel, String>("firstName"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<PersonModel, String>("lastName"));
-        tblViewPerson.setItems(personData);
+        InitTableViewPerson();
         
         //Action Change
         tblViewPerson.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PersonModel>() {
@@ -124,6 +122,13 @@ public class HomeController extends ModuleBase {
         loadViewByPath(VIEW_PATH, m_BorderPane);
     }
     
+    private void InitTableViewPerson()
+    {
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<PersonModel, String>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<PersonModel, String>("lastName"));
+        tblViewPerson.setItems(personData);
+    }
+    
     private void showPersonDetails(PersonModel personModel){
         firstNameLabel.setText(personModel.getFirstName());
         lastNameLabel.setText(personModel.getLastName());
@@ -141,10 +146,13 @@ public class HomeController extends ModuleBase {
 
     @FXML
     private void btnEdit_Action(ActionEvent event) {
+        
     }
 
     @FXML
     private void btnDelete_Action(ActionEvent event) {
+        int selectedIndex = tblViewPerson.getSelectionModel().getSelectedIndex();
+        tblViewPerson.getItems().remove(selectedIndex);
     }
     //*/
 }

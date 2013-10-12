@@ -15,11 +15,11 @@ import java.util.List;
  */
 public class PersonDataLayer implements IPersonDatalayer {
 
+    private List<PersonModel> persons = new ArrayList<>();
+    
     @Override
     public List<PersonModel> getAllPerson() {
         // get Data From DB
-        
-        List<PersonModel> persons = new ArrayList<>();
         persons.add(new PersonModel("Hans", "Muster"));
         persons.add(new PersonModel("Ruth", "Mueller"));
         persons.add(new PersonModel("Heinz", "Kurz"));
@@ -31,8 +31,13 @@ public class PersonDataLayer implements IPersonDatalayer {
         persons.add(new PersonModel("Martin", "Mueller"));
         
         return persons;
-        
-        
     }
+
+    @Override
+    public void addPerson(PersonModel person) {
+        persons.add(person);
+    }
+    
+    
     
 }

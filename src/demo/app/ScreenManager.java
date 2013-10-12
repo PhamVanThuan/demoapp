@@ -58,7 +58,7 @@ public class ScreenManager {
         settings.show();
     }
     public void showEditDialog(){
-        EditController editController = new EditController();
+        EditController editController = new EditController(m_PersonServiceProvider);
         Stage edit = showSubStage(Constants.Language.HELLO, editController.getView(), false);
         edit.initModality(Modality.APPLICATION_MODAL);
         edit.show();

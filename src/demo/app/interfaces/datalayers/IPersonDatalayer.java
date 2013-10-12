@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface IPersonDatalayer {
     public List<PersonModel> getAllPerson();
+    public void addPerson(PersonModel person);
 }

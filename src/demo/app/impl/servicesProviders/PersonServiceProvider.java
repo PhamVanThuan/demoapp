@@ -25,5 +25,10 @@ public class PersonServiceProvider implements IPersonServiceProvider{
     public List<PersonModel> getAllUser() {
         return m_PersonDataLayer.getAllPerson();
     }
+
+    @Override
+    public void addPerson(PersonModel person) {
+        m_PersonDataLayer.addPerson(person);
+    }
     
 }

@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface IPersonServiceProvider {
     public List<PersonModel> getAllUser();
+    public void addPerson(PersonModel person);
 }
